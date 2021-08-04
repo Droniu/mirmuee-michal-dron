@@ -13,6 +13,7 @@ const GlobalStyling = createGlobalStyle`
     background-color: #fff;
     width: 100%;
     margin: 0;
+    font-family: 'Barlow';
 
   }
   /* I'm not sure if this is the proper way to handle the

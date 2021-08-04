@@ -9,9 +9,9 @@ interface TableProps {
 }
 
 const StyledTable = styled.table`
+    color: #474747;
     margin: 1rem;
     border-collapse: collapse;
-
 `
 
 const BlueTd = styled.td`
