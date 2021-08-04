@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import localJSON from 'assets/data.json'
 import styled, {css} from 'styled-components'
 import openArrow from 'assets/ARROW OPEN.svg'
@@ -53,10 +53,26 @@ const Header = styled.div<CollapsedProp>`
 export const WikiItem = (props: WikiItemProps) => {
 
     const [collapsed, setCollapsed] = useState(true)
+    const [width, setWidth] = useState<number>(window.innerWidth);
+    
 
     const toggleCollapse = () => {
         setCollapsed(!collapsed);
-      };
+      }
+    const handleWindowSizeChange = () => {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange)
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange)
+        }
+    }, [])
+
+    let isMobile: boolean = (width <= 768)
+
+
 
       // From UI/UX perspective, I think toggleCollapse should be
       // on the whole header. Arrow icon is just too small.
@@ -66,14 +82,22 @@ export const WikiItem = (props: WikiItemProps) => {
             <StyledSpan>{props.data.data.films[props.id].title}</StyledSpan>
             <StyledArrow src={collapsed ? openArrow : closeArrow} alt="Show"/>
         </Header>
+        {!collapsed ?
+        <WikiTable
+        film={props.data.data.films[props.id].id}
+        planetsData={props.data.data.planets}
+        mobile={isMobile}/>
+        : null}
 
-        {
-            !collapsed && props.data.data.planets.map((el, i) => (
-                <WikiTable key={el.id} index={i}
+        {/* {
+            !collapsed && props.data.data.planets.map((el, i) => {
+            if (el.)
+            return <WikiTable key={el.id} index={i}
                 film={props.data.data.films[props.id].id}
-                planetsData={props.data.data.planets} />
-            ))
-        }
+                planetsData={props.data.data.planets}
+                mobile={isMobile}/>
+            })
+        } */}
     </StyledContainer>
 }
 export default WikiItem;

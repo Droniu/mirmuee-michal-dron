@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled, {css} from 'styled-components';
 import localJSON from 'assets/data.json'
+import { useEffect } from 'react';
 
 interface TableProps {
-    index: number,
     film: string,
+    mobile: boolean,
     planetsData: typeof localJSON.data.planets
 }
 interface IndexProps {
@@ -12,14 +13,19 @@ interface IndexProps {
 }
 
 const StyledTable = styled.table<IndexProps>`
-    padding: 1em;
+    @media screen and (min-width: 768px) {
+        background-color: #fff;
+
+    }
+
     border-collapse: collapse;
-    ${ props => (props.index % 2 === 1) && css`
+    padding: 1em;
+    &:nth-child(odd) {
         background-color: rgba(229, 229, 229, 0.5);
-  `}
+    }
 `
 
-const Label = styled.td`
+const MobileLabel = styled.td`
     padding: 1rem;
     width: 40%;
 `
@@ -34,67 +40,97 @@ const BlueTd = styled.td`
     color: #00687F;
 `
 
+
+
 export const WikiTable = (props: TableProps) => {
-    return <StyledTable index={props.index}>
-        <tbody>
+    
+    
+    if (!props.mobile) {
+        return <StyledTable index={0}> 
+            <thead>
+                <tr>
+                    <BlueTd>
+                        Planet Name
+                    </BlueTd>
+
+                </tr>
+            </thead>
+        </StyledTable>
+    } else {
+        // On mobile, the view consists of many subtables.
+        return <> 
+        {
+            props.planetsData.map((el, i) => {
+                let match = false
+                for (const film of el.filmConnection.films) {
+                    if (film.id === props.film) {
+                        match = true
+                        break
+                    }
+                }
+                return match && <StyledTable key={el.id} index={i}>
+                    <tbody>
         <tr>
-            <Label>
+            <MobileLabel>
                 Planet Name
-            </Label>
+            </MobileLabel>
             <BlueTd>
-                {props.planetsData[props.index].name}
+                {el.name}
             </BlueTd>
         </tr>
         <tr>
-            <Label>
+            <MobileLabel>
                 Rotation period
-            </Label>
+            </MobileLabel>
             <StyledTd>
-                {props.planetsData[props.index].rotationPeriod}
+                {el.rotationPeriod}
             </StyledTd>
         </tr>
         <tr>
-            <Label>
+            <MobileLabel>
                 Orbital period
-            </Label>
+            </MobileLabel>
             <StyledTd>
-                {props.planetsData[props.index].orbitalPeriod}
+                {el.orbitalPeriod}
             </StyledTd>
         </tr>
         <tr>
-            <Label>
+            <MobileLabel>
                 Diameter
-            </Label>
+            </MobileLabel>
             <StyledTd>
-                {props.planetsData[props.index].diameter}
+                {el.diameter}
             </StyledTd>
         </tr>
         <tr>
-            <Label>
+            <MobileLabel>
                 Climate
-            </Label>
+            </MobileLabel>
             <StyledTd>
-                {props.planetsData[props.index].climates.join(", ")}
+                {el.climates.join(", ")}
             </StyledTd>
         </tr>
         <tr>
-            <Label>
+            <MobileLabel>
                 Surface water
-            </Label>
+            </MobileLabel>
             <StyledTd>
-                {props.planetsData[props.index].surfaceWater}
+                {el.surfaceWater}
             </StyledTd>
         </tr>
         <tr>
-            <Label>
+            <MobileLabel>
                 Population
-            </Label>
+            </MobileLabel>
             <StyledTd>
-                {props.planetsData[props.index].population}
+                {el.population}
             </StyledTd>
         </tr>
         </tbody>
-    </StyledTable>
+            </StyledTable>
+        })
+        }</>    
+    }
 }
 
 export default WikiTable;
