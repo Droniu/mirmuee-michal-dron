@@ -2,6 +2,7 @@
 
 In order to run:
 ```
+yarn install
 yarn start
 ```
 
