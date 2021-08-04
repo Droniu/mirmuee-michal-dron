@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Planet } from 'types'
-import { StyledTable, StyledTd, BlueTd, HeaderTd, HeaderRow, MobileLabel } from './WikiTable.styles'
+import { StyledTable, StyledTd, BlueTd, HeaderRow, MobileLabel } from './WikiTable.styles'
 import TableHeaderElement from 'components/TableHeaderElement'
 
 interface TableProps {
@@ -10,7 +10,7 @@ interface TableProps {
 }
 
 
-const sortAsc = (a: Planet, b: Planet, sortField: keyof Planet) => {
+const sortAsc = (a: Planet, b: Planet, sortField: keyof Planet): number => {
     if (a[sortField] === null) {
         return -1
     }
@@ -39,7 +39,7 @@ export const WikiTable = ({ planetsData, mobile, film }: TableProps) => {
         })
     }
 
-    const sortOnClick = (key: keyof Planet) => {
+    const sortOnClick = (key: keyof Planet): void => {
         setSortField(key)
         setAsc((prev: boolean) => !prev)
     }
@@ -49,27 +49,13 @@ export const WikiTable = ({ planetsData, mobile, film }: TableProps) => {
         return <StyledTable> 
             <thead>
                 <HeaderRow>
-                    <TableHeaderElement sortOnClick={() => sortOnClick("name")}>
-                        Planet Name
-                    </TableHeaderElement>
-                    <HeaderTd onClick={() => sortOnClick("rotationPeriod")}>
-                        Rotation Period
-                    </HeaderTd>
-                    <HeaderTd onClick={() => sortOnClick("orbitalPeriod")}>
-                        Orbital Period
-                    </HeaderTd>
-                    <HeaderTd onClick={() => sortOnClick("diameter")}>
-                        Diameter
-                    </HeaderTd>
-                    <HeaderTd onClick={() => sortOnClick("climates")}>
-                        Climate
-                    </HeaderTd>
-                    <HeaderTd onClick={() => sortOnClick("surfaceWater")}>
-                        Surface Water
-                    </HeaderTd>
-                    <HeaderTd onClick={() => sortOnClick("population")}>
-                        Population
-                    </HeaderTd>
+                    <TableHeaderElement sortOnClick={() => sortOnClick("name")} label="Planet name" blue />
+                    <TableHeaderElement sortOnClick={() => sortOnClick("rotationPeriod")} label="Rotation Period" />
+                    <TableHeaderElement sortOnClick={() => sortOnClick("orbitalPeriod")} label="Orbital Period" />
+                    <TableHeaderElement sortOnClick={() => sortOnClick("diameter")} label="Diameter" />
+                    <TableHeaderElement sortOnClick={() => sortOnClick("climates")} label="Climate" />
+                    <TableHeaderElement sortOnClick={() => sortOnClick("surfaceWater")} label="Surface Water" />
+                    <TableHeaderElement sortOnClick={() => sortOnClick("population")} label="Population" />
                 </HeaderRow>
             </thead>
             <tbody>

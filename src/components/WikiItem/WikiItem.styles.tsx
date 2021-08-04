@@ -13,7 +13,7 @@ export const StyledContainer = styled.div`
     justify-content: flex-start;
     width: 100%;
     background-color: #fff;
-    z-index: 2;
+    z-index: 12;
     border-radius: 4px;
     box-shadow: 0px 2px 1px rgba(196, 196, 196, 0.2);
 

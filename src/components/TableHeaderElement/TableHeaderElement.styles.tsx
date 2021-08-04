@@ -1,4 +1,8 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+
+interface BlueProps {
+    blue?: boolean
+}
 
 export const ArrowIcon = styled.span`
     transform: rotate(-90deg)
@@ -12,7 +16,13 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     cursor: pointer
 `
-export const BlueHeaderTd = styled.td`
+export const HeaderTd = styled.div<BlueProps>`
     padding: 1rem;
-    color: #00687F;
+    color: #474747;
+    ${ props => (props.blue) && css`
+        color: #00687F
+  `}
+`
+export const TdWrapper = styled.td`
+    padding: 0rem;
 `

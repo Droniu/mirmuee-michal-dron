@@ -30,6 +30,7 @@ export const StyledContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 95%;
+  max-width: 1024px;
   background-color: #e0e6ee;
   border-radius: 10px;
   padding: 2%;

@@ -1,20 +1,30 @@
-import {HeaderWrapper, BlueHeaderTd, ArrowWrapper, ArrowIcon} from './TableHeaderElement.styles'
+import {HeaderWrapper, HeaderTd, ArrowWrapper, ArrowIcon, TdWrapper} from './TableHeaderElement.styles'
 
-export const TableHeaderElement = ({sortOnClick, children}: any) => {
 
-    return <HeaderWrapper onClick={sortOnClick}>
-         <BlueHeaderTd >
-            {children}
-        </BlueHeaderTd>
-        <ArrowWrapper>
-            <ArrowIcon>
-                {'>'}
-            </ArrowIcon>
-            <ArrowIcon>
-                {'<'}
-            </ArrowIcon>
-        </ArrowWrapper>
-    </HeaderWrapper>
+interface TableHeaderElementProps {
+    sortOnClick: () => void
+    label: string
+    blue?: boolean
+}
+
+export const TableHeaderElement = ({sortOnClick, label, blue}: TableHeaderElementProps) => {
+
+    return <TdWrapper>
+        <HeaderWrapper onClick={sortOnClick}>
+            <HeaderTd blue={blue}>
+                {label}
+            </HeaderTd>
+            <ArrowWrapper>
+                <ArrowIcon>
+                    {'>'}
+                </ArrowIcon>
+                <ArrowIcon>
+                    {'<'}
+                </ArrowIcon>
+            </ArrowWrapper>
+        </HeaderWrapper>
+    </TdWrapper> 
+
 
 }
 
