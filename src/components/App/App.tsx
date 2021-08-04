@@ -12,6 +12,7 @@ const GlobalStyling = createGlobalStyle`
     display: flex;
     background-color: #fff;
     width: 100%;
+    margin: 0;
 
   }
   /* I'm not sure if this is the proper way to handle the
@@ -31,7 +32,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 66%;
+  width: 95%;
   background-color: #e0e6ee;
   border-radius: 10px;
   padding: 2%;
