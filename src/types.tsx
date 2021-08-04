@@ -1,26 +1,25 @@
 export interface Planet {
-    id: string;
-    name: string;
-    rotationPeriod: number | null;
-    orbitalPeriod: number | null;
-    diameter: number | null;
-    climates: string[];
-    surfaceWater: number | null;
-    population: number | null;
+    id: string
+    name: string
+    rotationPeriod: number | null
+    orbitalPeriod: number | null
+    diameter: number | null
+    climates: string[]
+    surfaceWater: number | null
+    population: number | null
     filmConnection: {
         films: {
-            id: string;
-        }[];
+            id: string
+        }[]
     }
 }
 
 export interface Film {
-    id: string;
-    title: string;
+    id: string
+    title: string
 }
 
 export interface Data {
-    films: Film[];
-    planets: Planet[];
-
+    films: Film[]
+    planets: Planet[]
 }

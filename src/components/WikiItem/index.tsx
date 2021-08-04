@@ -1,1 +1,1 @@
-export { default } from './WikiItem';
+export { default } from './WikiItem'

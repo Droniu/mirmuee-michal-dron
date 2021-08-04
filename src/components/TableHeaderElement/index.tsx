@@ -1,1 +1,1 @@
-export { default } from './TableHeaderElement';
+export { default } from './TableHeaderElement'

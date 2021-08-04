@@ -25,18 +25,18 @@ export const GlobalStyling = createGlobalStyle`
 `
 
 export const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 95%;
-  max-width: 1024px;
-  background-color: #e0e6ee;
-  border-radius: 10px;
-  padding: 2%;
-  margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    max-width: 1024px;
+    background-color: #e0e6ee;
+    border-radius: 10px;
+    padding: 2%;
+    margin-top: 4%;
 `
 export const StyledLogo = styled.img`
-  max-width: 80%;
-  margin-bottom: 0.5rem;
+    max-width: 80%;
+    margin-bottom: 0.5rem;
 `

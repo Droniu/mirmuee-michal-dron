@@ -1,1 +1,1 @@
-export { default } from './WikiTable';
+export { default } from './WikiTable'

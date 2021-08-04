@@ -5,7 +5,6 @@ interface CollapsedProp {
 }
 
 export const StyledContainer = styled.div`
-
     display: flex;
     margin: 0.5em;
     justify-content: space-between;
@@ -16,14 +15,12 @@ export const StyledContainer = styled.div`
     z-index: 12;
     border-radius: 4px;
     box-shadow: 0px 2px 1px rgba(196, 196, 196, 0.2);
-
 `
 export const StyledSpan = styled.span`
     color: #00687f;
     font-family: 'Barlow';
     font-style: normal;
     font-weight: bold;
-
 `
 export const StyledArrow = styled.img`
     user-select: none;
@@ -35,7 +32,9 @@ export const Header = styled.div<CollapsedProp>`
     height: 100%;
     display: flex;
     justify-content: space-between;
-    ${ props => !(props.collapsed) && css`
-        box-shadow: 0px 4px 12px rgba(224, 230, 238, 0.5);
-  `}
+    ${(props) =>
+        !props.collapsed &&
+        css`
+            box-shadow: 0px 4px 12px rgba(224, 230, 238, 0.5);
+        `}
 `

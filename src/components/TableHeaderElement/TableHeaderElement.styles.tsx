@@ -1,11 +1,11 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
 interface BlueProps {
     blue?: boolean
 }
 
 export const ArrowIcon = styled.span`
-    transform: rotate(-90deg)
+    transform: rotate(-90deg);
 `
 export const ArrowWrapper = styled.div`
     display: flex;
@@ -14,14 +14,16 @@ export const ArrowWrapper = styled.div`
 export const HeaderWrapper = styled.div`
     display: flex;
     align-items: center;
-    cursor: pointer
+    cursor: pointer;
 `
 export const HeaderTd = styled.div<BlueProps>`
     padding: 1rem;
     color: #474747;
-    ${ props => (props.blue) && css`
-        color: #00687F
-  `}
+    ${(props) =>
+        props.blue &&
+        css`
+            color: #00687f;
+        `}
 `
 export const TdWrapper = styled.td`
     padding: 0rem;

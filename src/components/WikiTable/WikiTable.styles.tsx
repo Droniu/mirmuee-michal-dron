@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const StyledTable = styled.table`
     @media screen and (min-width: 768px) {
         background-color: #fff;
-
     }
 
     border-collapse: collapse;
@@ -26,7 +25,7 @@ export const StyledTd = styled.td`
 
 export const BlueTd = styled.td`
     padding: 1rem;
-    color: #00687F;
+    color: #00687f;
 `
 
 export const HeaderRow = styled.tr`
