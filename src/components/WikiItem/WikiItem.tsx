@@ -69,7 +69,7 @@ export const WikiItem = (props: WikiItemProps) => {
 
         {
             !collapsed && props.data.data.planets.map((el, i) => (
-                <WikiTable index={i}
+                <WikiTable key={el.id} index={i}
                 film={props.data.data.films[props.id].id}
                 planetsData={props.data.data.planets} />
             ))

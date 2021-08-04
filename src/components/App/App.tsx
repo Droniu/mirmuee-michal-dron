@@ -50,7 +50,8 @@ function App() {
     <GlobalStyling />
     <StyledContainer>
       <StyledLogo src={logo} alt="logo"/>
-      {localJSON.data.films.map((el, index) => <WikiItem id={index} data={localJSON}/>)}
+      {localJSON.data.films.map((el, index) => <WikiItem key={el.id}
+      id={index} data={localJSON}/>)}
     </StyledContainer>
 
   </>
