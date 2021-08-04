@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components'
 import logo from 'assets/LOGO.svg'
+import localJSON from 'assets/data.json'
+import WikiItem from 'components/WikiItem';
 
 const GlobalStyling = createGlobalStyle`
   * {
@@ -26,23 +28,27 @@ const GlobalStyling = createGlobalStyle`
 
 const StyledContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 66%;
   background-color: #e0e6ee;
   border-radius: 10px;
-  padding: 5%;
+  padding: 2%;
   margin-top: 4%;
 `
 const StyledLogo = styled.img`
   max-width: 80%;
+  margin-bottom: 0.5rem;
 `
+
 
 function App() {
   return <>
     <GlobalStyling />
     <StyledContainer>
       <StyledLogo src={logo} alt="logo"/>
-
+      {localJSON.data.films.map((el, index) => <WikiItem id={index} data={localJSON}/>)}
     </StyledContainer>
 
   </>
